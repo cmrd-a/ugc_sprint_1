@@ -2,9 +2,10 @@ from abc import ABC, abstractmethod
 from typing import Type, TypeVar
 
 from aioredis import Redis
-from core.config import config
 from elastic_transport import ObjectApiResponse
 from elasticsearch import AsyncElasticsearch
+
+from core.config import config
 from models.common import Base
 
 BaseTypeVar = TypeVar("BaseTypeVar", bound=Base)

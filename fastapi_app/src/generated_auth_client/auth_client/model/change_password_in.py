@@ -11,7 +11,6 @@
 import re  # noqa: F401
 import sys  # noqa: F401
 
-from auth_client.exceptions import ApiAttributeError
 from auth_client.model_utils import (  # noqa: F401
     ApiTypeError,
     ModelComposed,
@@ -27,6 +26,7 @@ from auth_client.model_utils import (  # noqa: F401
     validate_get_composed_info,
     OpenApiModel,
 )
+from auth_client.exceptions import ApiAttributeError
 
 
 class ChangePasswordIn(ModelNormal):

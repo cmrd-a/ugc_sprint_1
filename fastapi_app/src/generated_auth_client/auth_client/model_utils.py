@@ -8,6 +8,8 @@
 """
 
 
+from datetime import date, datetime  # noqa: F401
+from copy import deepcopy
 import inspect
 import io
 import os
@@ -15,8 +17,8 @@ import pprint
 import re
 import tempfile
 import uuid
-from copy import deepcopy
-from datetime import date, datetime  # noqa: F401
+
+from dateutil.parser import parse
 
 from auth_client.exceptions import (
     ApiKeyError,
@@ -24,7 +26,6 @@ from auth_client.exceptions import (
     ApiTypeError,
     ApiValueError,
 )
-from dateutil.parser import parse
 
 none_type = type(None)
 file_type = io.IOBase

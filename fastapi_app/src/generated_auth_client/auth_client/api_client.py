@@ -8,15 +8,17 @@
 """
 
 
-import atexit
-import io
 import json
+import atexit
 import mimetypes
+from multiprocessing.pool import ThreadPool
+import io
 import os
 import re
 import typing
-from multiprocessing.pool import ThreadPool
 from urllib.parse import quote
+from urllib3.fields import RequestField
+
 
 from auth_client import rest
 from auth_client.configuration import Configuration
@@ -35,7 +37,6 @@ from auth_client.model_utils import (
     none_type,
     validate_and_convert_types,
 )
-from urllib3.fields import RequestField
 
 
 class ApiClient(object):

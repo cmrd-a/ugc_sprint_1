@@ -12,12 +12,6 @@ import re  # noqa: F401
 import sys  # noqa: F401
 
 from auth_client.api_client import ApiClient, Endpoint as _Endpoint
-from auth_client.model.change_role_in import ChangeRoleIn
-from auth_client.model.create_role_in import CreateRoleIn
-from auth_client.model.create_role_out import CreateRoleOut
-from auth_client.model.delete_role_in import DeleteRoleIn
-from auth_client.model.get_all_roles_out import GetAllRolesOut
-from auth_client.model.set_user_role_in import SetUserRoleIn
 from auth_client.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -27,6 +21,14 @@ from auth_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types,
 )
+from auth_client.model.change_role_in import ChangeRoleIn
+from auth_client.model.create_role_in import CreateRoleIn
+from auth_client.model.create_role_out import CreateRoleOut
+from auth_client.model.delete_role_in import DeleteRoleIn
+from auth_client.model.get_all_roles_out import GetAllRolesOut
+from auth_client.model.http_error import HTTPError
+from auth_client.model.set_user_role_in import SetUserRoleIn
+from auth_client.model.validation_error import ValidationError
 
 
 class AdminApi(object):

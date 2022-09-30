@@ -13,7 +13,15 @@
 __version__ = "1.0.0"
 
 # import ApiClient
+from auth_client.api_client import ApiClient
 
 # import Configuration
+from auth_client.configuration import Configuration
 
 # import exceptions
+from auth_client.exceptions import OpenApiException
+from auth_client.exceptions import ApiAttributeError
+from auth_client.exceptions import ApiTypeError
+from auth_client.exceptions import ApiValueError
+from auth_client.exceptions import ApiKeyError
+from auth_client.exceptions import ApiException
