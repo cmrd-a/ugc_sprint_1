@@ -33,6 +33,12 @@ API доступно по адресу: http://localhost/api/docs.
 
 http://localhost/auth/docs
 
+# Analytics
+ - `cp -R analytics_etl/data_example analytics_etl/data`
+ - `make analyticts_up`
+
+Confluent - http://localhost:9021
+
 ### Команды для разработки:
  - `make dev_up` - поднять только БД с открытыми портами.
  - `make black` - отформатировать код.
