@@ -1,6 +1,6 @@
 # Проектная работа 8 спринта, команда #4
 
-https://github.com/cmrd-a/Auth_sprint_2
+https://github.com/cmrd-a/ugc_sprint_1
 
 ## Проект "Фильмотека"
 Состоит из:
