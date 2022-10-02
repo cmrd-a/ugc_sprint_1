@@ -6,7 +6,7 @@ from services.analytics import KafkaService, get_kafka_service
 router = APIRouter()
 
 
-@router.get("/", summary="Сохранение прогресса просмотра фильма")
+@router.post("/", summary="Сохранение прогресса просмотра фильма")
 async def load_to_kafka(
     request: FilmProgressView,
     kafka_service: KafkaService = Depends(get_kafka_service),
