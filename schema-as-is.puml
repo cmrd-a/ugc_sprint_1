@@ -1,0 +1,27 @@
+@startuml
+skinparam componentStyle uml2
+actor Клиент as Client
+component WebApp
+component fastapi_app
+component auth
+component django_admin
+component etl_movies
+database Postgres_auth
+database Postgres_movies
+database Elastic
+database Redis_auth
+database Redis_api
+
+Client -r----- WebApp
+WebApp -- fastapi_app: Запросы с токеном(или без)
+WebApp --- auth: Получение токена авторизации
+fastapi_app -r-- auth: Проверка прав доступа
+fastapi_app -d- Elastic: Получение информации о фильмах
+fastapi_app -d- Redis_api: Кеширование ответов
+auth - Postgres_auth: Получение информации о пользователе
+auth - Redis_auth: Проверка инвалидированных токенов
+Client -l- django_admin: Упрвление контентом
+django_admin -d- Postgres_movies
+Postgres_movies -d-> etl_movies
+etl_movies --> Elastic
+@enduml
