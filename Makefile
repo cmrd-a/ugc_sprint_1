@@ -19,10 +19,10 @@ tests_up:
 tests_down:
 	docker compose -f tests/functional/docker-compose.yml down
 
-analyticts_up:
+analytics_up:
 	docker compose -f docker-compose-analytics.yml up -d
 
-analyticts_down:
+analytics_down:
 	docker compose -f docker-compose-analytics.yml down
 
 

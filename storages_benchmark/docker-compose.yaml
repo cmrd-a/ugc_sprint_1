@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:14.3
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./init-postgres.sql:/docker-entrypoint-initdb.d/init-postgres.sql
+      - ./views_data.csv:/views_data.csv
+    ports:
+      - "5432:5432"
+  
+  vertica:
+    image: jbfavre/vertica:9.2.0-7_debian-8
+    ports:
+      - "5433:5433"
+      - "5444:5444"
+
+  vertica-setup:
+    image: jbfavre/vertica:9.2.0-7_debian-8
+    depends_on:
+      - vertica
+    restart: on-failure
+    volumes:
+      - ./init-vertica.sql:/init-vertica.sql
+      - ./views_data.csv:/views_data.csv
+    entrypoint: [ "sh", "-c",  "/opt/vertica/bin/vsql -f '/init-vertica.sql' -h vertica -U dbadmin -d docker" ]
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:22.6-alpine
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      CLICKHOUSE_DB: test
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+    volumes:
+      - ./init-clickhouse.sql:/docker-entrypoint-initdb.d/init-clickhouse.sql
+
+  clickhouse-setup:
+    image: clickhouse/clickhouse-server:22.6-alpine
+    depends_on:
+      - clickhouse
+    restart: on-failure
+    volumes:
+      - ./views_data.csv:/views_data.csv
+    entrypoint: [ "sh", "-c", "cat /views_data.csv | \
+                              clickhouse-client -h clickhouse \
+                              --query='INSERT INTO views FORMAT CSVWithNames'" ]

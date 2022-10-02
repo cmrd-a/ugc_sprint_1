@@ -1,0 +1,4 @@
+      name       read      write        agg
+clickhouse     0.0051      0.003     0.0532
+   vertica     0.0347     0.0209     1.6296
+  postgres     0.0008     0.0008      1.977
