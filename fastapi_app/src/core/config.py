@@ -22,6 +22,8 @@ class Settings(BaseSettings):
     auth_host: str = Field(env="AUTH_HOST", default="http://localhost")
     auth_port: int = Field(env="AUTH_PORT", default=9000)
 
+    kafka_server: str = Field(env="KAFKA_SERVER", default="localhost:9092")
+
     @property
     def es_url(self):
         return f"{self.es_host}:{self.es_port}"
