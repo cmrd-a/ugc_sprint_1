@@ -33,7 +33,7 @@ def main_loop():
         auto_offset_reset="earliest",
         group_id="analytics-etl",
         value_deserializer=orjson.loads,
-        key_deserializer=orjson.loads,
+        key_deserializer=lambda k: k.decode(),
     )
     ch_client = Client(host=setting.ch_server, user=setting.ch_user, password=setting.ch_password)
 
