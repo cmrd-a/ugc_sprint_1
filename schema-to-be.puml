@@ -1,0 +1,35 @@
+@startuml
+!include <cloudinsight/kafka>
+queue "<$kafka>" as kafka
+skinparam componentStyle uml2
+actor Клиент as Client
+component WebApp
+component fastapi_app
+component auth
+component django_admin
+component etl_movies
+component analytics_etl
+database Postgres_auth
+database Postgres_movies
+database Elastic
+database Redis_auth
+database Redis_api
+database Clickhouse
+
+Client -r----- WebApp
+WebApp -r- fastapi_app: Запросы с токеном(или без)
+WebApp --- auth: Получение токена авторизации
+fastapi_app -r-- auth: Проверка прав доступа
+fastapi_app -d- Elastic: Получение информации о фильмах
+fastapi_app -d- Redis_api: Кеширование ответов
+auth - Postgres_auth: Получение информации о пользователе
+auth - Redis_auth: Проверка инвалидированных токенов
+Client -l- django_admin: Упрвление контентом
+django_admin -d- Postgres_movies
+Postgres_movies -d-> etl_movies
+etl_movies --> Elastic
+WebApp - fastapi_app: Отправка аналитики
+fastapi_app -> kafka
+kafka -> analytics_etl
+analytics_etl -> Clickhouse
+@enduml
