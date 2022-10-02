@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
 from kafka import KafkaProducer
 
-from api.v1 import films, genres, persons
+from api.v1 import films, genres, persons, analytics
 from core.config import config
 from core.logger import LOGGING
 from db import elastic, redis, kafka_client
@@ -36,7 +36,7 @@ async def shutdown():
 app.include_router(films.router, prefix="/api/v1/films", tags=["films"])
 app.include_router(genres.router, prefix="/api/v1/genres", tags=["genres"])
 app.include_router(persons.router, prefix="/api/v1/persons", tags=["persons"])
-app.include_router(persons.router, prefix="/api/v1/analytics", tags=["analytics"])
+app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["analytics"])
 
 if __name__ == "__main__":
     uvicorn.run(
