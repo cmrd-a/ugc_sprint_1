@@ -1,3 +1,4 @@
+import json
 from functools import lru_cache
 from uuid import UUID
 
@@ -5,7 +6,6 @@ from fastapi import Depends
 from kafka import KafkaProducer
 
 from db.kafka_client import get_kafka
-import json
 
 
 class KafkaService:
