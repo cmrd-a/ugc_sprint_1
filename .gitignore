@@ -162,4 +162,4 @@ cython_debug/
 
 state/
 auth.env
-cc/
+analytics_etl/data/

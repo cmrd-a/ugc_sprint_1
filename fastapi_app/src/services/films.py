@@ -2,10 +2,11 @@ from enum import Enum
 from functools import lru_cache
 
 from aioredis import Redis
-from db.elastic import get_elastic
-from db.redis import get_redis
 from elasticsearch import AsyncElasticsearch, NotFoundError
 from fastapi import Depends
+
+from db.elastic import get_elastic
+from db.redis import get_redis
 from models.es_models import Film, Films
 from services.common import ElasticService, RedisCache, Cache
 

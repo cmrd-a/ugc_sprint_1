@@ -12,11 +12,6 @@ import re  # noqa: F401
 import sys  # noqa: F401
 
 from auth_client.api_client import ApiClient, Endpoint as _Endpoint
-from auth_client.model.change_password_in import ChangePasswordIn
-from auth_client.model.email_password_in import EmailPasswordIn
-from auth_client.model.get_permissions_out import GetPermissionsOut
-from auth_client.model.login_history_out import LoginHistoryOut
-from auth_client.model.login_refresh_out import LoginRefreshOut
 from auth_client.model_utils import (  # noqa: F401
     check_allowed_values,
     check_validations,
@@ -26,6 +21,13 @@ from auth_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types,
 )
+from auth_client.model.change_password_in import ChangePasswordIn
+from auth_client.model.email_password_in import EmailPasswordIn
+from auth_client.model.get_permissions_out import GetPermissionsOut
+from auth_client.model.http_error import HTTPError
+from auth_client.model.login_history_out import LoginHistoryOut
+from auth_client.model.login_refresh_out import LoginRefreshOut
+from auth_client.model.validation_error import ValidationError
 
 
 class UserApi(object):

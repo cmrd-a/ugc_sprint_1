@@ -1,6 +1,7 @@
 from http import HTTPStatus
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Path
+
 from messages.error_messages import FILM_NOT_FOUND, FILMS_NOT_FOUND, FILM_NOT_AVIABLE_TO_USER
 from models.api_models import FilmFull, FilmsRated
 from models.common import PaginatedParams

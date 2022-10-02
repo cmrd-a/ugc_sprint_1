@@ -13,3 +13,5 @@
 #   sys.setrecursionlimit(n)
 
 # Import APIs into API package:
+from auth_client.api.admin_api import AdminApi
+from auth_client.api.user_api import UserApi

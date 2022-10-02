@@ -1,6 +1,7 @@
 from http import HTTPStatus
 
 from fastapi import APIRouter, Depends, HTTPException, Path
+
 from messages.error_messages import GENRE_NOT_FOUND, GENRES_NOT_FOUND
 from models.api_models import GenresDescripted, GenreDescripted
 from models.common import Genre

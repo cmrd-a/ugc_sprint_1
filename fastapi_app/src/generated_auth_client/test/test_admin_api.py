@@ -10,6 +10,7 @@
 
 import unittest
 
+import auth_client
 from auth_client.api.admin_api import AdminApi  # noqa: E501
 
 
