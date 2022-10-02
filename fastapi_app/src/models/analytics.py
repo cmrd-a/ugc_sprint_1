@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from common import Base
+from models.common import Base
 
 
 class FilmProgressView(Base):
