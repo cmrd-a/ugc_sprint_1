@@ -15,7 +15,7 @@ class KafkaService:
     def put_film_progress(self, user_id: int, film_id: UUID, film_position_ms: int) -> None:
         self.kafka.send(
             topic="views",
-            value=json.dumps({"film_position_ms": film_position_ms}),
+            value=json.dumps({"film_position_ms": film_position_ms}).encode(),
             key=f"{user_id}+{film_id}".encode(),
         )
 
