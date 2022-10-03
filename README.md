@@ -45,11 +45,11 @@ Confluent - http://localhost:9021
 
 ### Результаты исследования хранилищ данных
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+|    name    |  read  | write  |  agg   |
+|:----------:|:------:|:------:|:------:|
+| clickhouse | 0.0051 | 0.003  | 0.0532 |
+|  vertica   | 0.0347 | 0.0209 | 1.6296 |
+|  postgres  | 0.0008 | 0.0008 | 1.977  |
 
 ---
 @cmrd-a - тимлид
