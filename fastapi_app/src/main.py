@@ -2,10 +2,10 @@ import logging
 
 import aioredis
 import uvicorn as uvicorn
+from aiokafka import AIOKafkaProducer
 from elasticsearch import AsyncElasticsearch
 from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
-from kafka import KafkaProducer
 
 from api.v1 import films, genres, persons, analytics
 from core.config import config
@@ -24,13 +24,14 @@ app = FastAPI(
 async def startup():
     redis.redis = await aioredis.from_url(config.redis_url)
     elastic.es = AsyncElasticsearch(hosts=[f"{config.es_host}:{config.es_port}"])
-    kafka_client.kafka = KafkaProducer(bootstrap_servers=[config.kafka_server])
+    kafka_client.kafka = AIOKafkaProducer(bootstrap_servers=[config.kafka_server])
 
 
 @app.on_event("shutdown")
 async def shutdown():
     await redis.redis.close()
     await elastic.es.close()
+    await kafka_client.kafka.stop()
 
 
 app.include_router(films.router, prefix="/api/v1/films", tags=["films"])

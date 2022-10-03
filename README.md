@@ -41,7 +41,15 @@ Confluent - http://localhost:9021
 
 ### Команды для разработки:
  - `make dev_up` - поднять только БД с открытыми портами.
- - `make black` - отформатировать код.
+ - `make black` - 
+
+### Результаты исследования хранилищ данных
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
 ---
 @cmrd-a - тимлид

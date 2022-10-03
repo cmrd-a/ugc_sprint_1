@@ -1,7 +1,7 @@
-from kafka import KafkaProducer
+from aiokafka import AIOKafkaProducer
 
-kafka: KafkaProducer | None = None
+kafka: AIOKafkaProducer | None = None
 
 
-async def get_kafka() -> KafkaProducer:
+async def get_kafka() -> AIOKafkaProducer:
     return kafka
