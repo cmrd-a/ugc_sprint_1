@@ -24,6 +24,7 @@ class ETL:
         for values in self.transform():
             query = f"INSERT INTO movies.views (id, user_id, film_id, film_position_ms, event_dt) VALUES {values}"
             self.ch_client.execute(query)
+            self.kafka_consumer.commit()
 
 
 def main_loop():
@@ -34,6 +35,7 @@ def main_loop():
         group_id="analytics-etl",
         value_deserializer=orjson.loads,
         key_deserializer=lambda k: k.decode(),
+        enable_auto_commit=False,
     )
     ch_client = Client(host=setting.ch_server, user=setting.ch_user, password=setting.ch_password)
 
